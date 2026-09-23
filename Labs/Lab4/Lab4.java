@@ -3,7 +3,6 @@
 // Lab 4
 
 import java.util.Scanner;
-import java.util.Set;
 
 public class Lab4 {
     public static void main(String[] args) {
@@ -48,7 +47,7 @@ public class Lab4 {
                     System.out.print("Enter the number of tickets to set: ");
                     int ticketsToSet = scanner.nextInt();
                     wallet.setTickets(ticketsToSet);
-                    scanner.nextLine(); // consume newline
+                    scanner.nextLine();
                     break;
                 case "3":
                     System.out.println("*** Buy Prize *** ");
@@ -105,7 +104,6 @@ public class Lab4 {
                     break;
                 case "4":
                     // 4.	Set holiday: Flips the ParkWallet static field to its current opposite, using the appropriate method
-                    // Set holiday
                     ParkWallet.setHoliday(!ParkWallet.getHoliday());
                     if (ParkWallet.getHoliday()) {
                         System.out.println("It is now a holiday!");
