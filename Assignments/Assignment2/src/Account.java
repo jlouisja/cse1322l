@@ -12,7 +12,7 @@ public class Account {
         return owner;
     }
 
-    public void postOwner(Entry entry) {
+    public void postEntry(Entry entry) {
         entries.add(entry);
     }
     public ArrayList<Entry> listByCounterparty(String counterparty) {
@@ -36,17 +36,7 @@ public class Account {
         return counterparties;
     }
     public String getStatement(){
-        // returns a string containing the balance that this account has with every other account in the following format:
-// Statement for '{owner}'
-// {balances}
-// Where {balances} has all the balances this account has with every other account, one per line. These balances must be in one of the formats below:
-// 	{owner} owes ${amount} to {counterparty}
-// OR
-// 	{owner} is owed ${amount} from {counterparty}
-// Thus, using the example given under "Accounts and Entries", Bob's account's getStatement() would return the following string (Note that {amount} is not negative):
-// 	Statement for 'Bob':
-// 	Bob is owed $35 from Alice
-// Bob owes $15 to Charlie
+
         StringBuilder statement = new StringBuilder();
         statement.append(String.format("Statement for '%s':\n", owner));
         ArrayList<String> counterparties = listByCounterparties();
