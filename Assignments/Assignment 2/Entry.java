@@ -15,7 +15,6 @@ private Entry(String counterparty, int quantity, boolean counterpartyGiving) {
         this.quantity = quantity;
         this.counterpartyGiving = counterpartyGiving;
         this.id = nextId;
-        nextId++;
     }
 // getters and setters for all fields except nextId
     public String getCounterparty() {
@@ -51,18 +50,18 @@ private Entry(String counterparty, int quantity, boolean counterpartyGiving) {
 // #{id}: gave ${quantity} to {counterparty}
 public String toString() {
         if (counterpartyGiving) {
-            return String.format("#%d: received $%d from %s", id, quantity, counterparty);
+            return "#" + id + ": received $" + quantity + " from " + counterparty;
         } else {
-            return String.format("#%d: gave $%d to %s", id, quantity, counterparty);
+            return "#" + id + ": gave $" + quantity + " to " + counterparty;
         }
     }
 // The string to be returned depends on the "counterpartyGiving" variable: if the counterparty is giving (i.e.: the field is true), then the first string must be returned. Otherwise, the second string must be returned.
 
-public static Entry[] createEntries(String reciever, String sender, int amount) {
+public static Entry[] createEntries(String sender, String receiver, int amount) {
         Entry[] entries = new Entry[2];
-        entries[0] = new Entry(reciever, amount, true);
+        entries[0] = new Entry(receiver, amount, true);
         entries[1] = new Entry(sender, amount, false);
-        nextId += 1;
+        nextId++;
         return entries;
     }
 
