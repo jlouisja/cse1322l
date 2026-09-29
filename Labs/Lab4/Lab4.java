@@ -113,6 +113,7 @@ public class Lab4 {
                     break;
                 case "5":
                 // 5.	Quit: Terminates the program
+                System.out.println("Exiting the ticketing program...");
                     prompt = false;
                     break;
                 default:
