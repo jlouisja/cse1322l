@@ -20,12 +20,12 @@ public class AudioContent extends DynamicContent {
 
     // list participants on separate lines
     public String listParticipants(){
-        if (participants.size() == 0) {
+        if (participants == null || participants.isEmpty()) {
             return "Unknown participants";
         } else {
             StringBuilder sb = new StringBuilder();
             for (String participant : participants) {
-                sb.append(participant).append("\n");
+                sb.append(participant).append("\n\t");
             }
             return sb.toString();
         }
@@ -37,6 +37,6 @@ public class AudioContent extends DynamicContent {
         "\n" + description + 
         "\n" + location + 
         "\nDuration: " + duration/1000 + " seconds" +
-        "\nParticipants:\n" + listParticipants();
+        "\nParticipants:\n\t" + listParticipants();
     }
 }

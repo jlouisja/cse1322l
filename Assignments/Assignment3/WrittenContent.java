@@ -39,7 +39,7 @@ public class WrittenContent extends  StaticContent {
 
     // override toString method
     public String toString() {
-        return "#" + id + ":" + name + "\n" + description + "\n" + location + "\nby " + author + "\n Read time: " + getReadTime();
+        return "#" + id + ":" + name + "\n" + description + "\n" + location + "\nby " + author + "\nRead time: " + getReadTime();
     }
     
 }
