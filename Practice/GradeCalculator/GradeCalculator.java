@@ -23,7 +23,7 @@ public class GradeCalculator {
         labs.add(new Lab(2, 96));
         labs.add(new Lab(3, 100));
         labs.add(new Lab(4, 100));
-        // labs.add(new Lab(5, 100));
+        labs.add(new Lab(5, 100));
         // labs.add(new Lab(6, 100));
         // labs.add(new Lab(7, 100));
         // labs.add(new Lab(8, 100));
