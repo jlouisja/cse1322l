@@ -1,5 +1,6 @@
 package Labs.Lab6;
 
-public class FindFib {
-    
+public interface FindFib {
+
+    int calculateFib(int n);
 }
