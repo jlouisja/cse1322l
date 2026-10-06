@@ -1,6 +1,5 @@
 package Practice.GradeCalculator;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class Quiz {
     public int quizNumber; // default quiz number is 1

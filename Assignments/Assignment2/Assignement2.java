@@ -13,27 +13,20 @@ public class Assignement2 {
            // 2.	In a loop, read every element in "transactions".
            for (String transaction : transactions) {
                 //	Extract the parties involved and the amount
-                String[] parts = transaction.split(" ");
-                String sender = parts[0];
-                String receiver = parts[2];
-                int amount = Integer.parseInt(parts[3].substring(1));
+                String sender = transaction.split(" ")[0];
+                String receiver = transaction.split(" ")[1];
+                int amount = Integer.parseInt(transaction.split(" ")[2]);
                 // Entry.createEntries(). Save the returned array
                 Entry[] entries = Entry.createEntries(sender, receiver, amount);
                 // 	Retrieve the Account objects of both the sender and the receiver from "accounts"
                 Account senderAccount = null;
-                
+                Account receiverAccount = null;
                 for (Account account : accounts) {
                     if (account.getOwner().equals(sender)) {
                         senderAccount = account;
-                        break;
                     }
-                }
-                Account receiverAccount = null;
-                
-                for (Account account : accounts) {
                     if (account.getOwner().equals(receiver)) {
                         receiverAccount = account;
-                        break;
                     }
                 }
                 // •	If the sender or the receiver don't have accounts, create and append them to "accounts"
@@ -59,12 +52,12 @@ public class Assignement2 {
     }
     public static void main(String[] args) {
         // Create an arraylist of Accounts called "ledger".
-        ArrayList<Account> ledger = new ArrayList<Account>();
+        ArrayList<Account> ledger = new ArrayList<>();
         boolean prompt = true;
         Scanner scanner = new Scanner(System.in);
 
         while (prompt) {
-            System.out.println("*** Ledger App ***");
+            System.out.println("*** Ledger App ***s");
             // Print the following menu:
             System.out.println("1. Load file");
             System.out.println("2. Show all accounts");
@@ -79,7 +72,6 @@ public class Assignement2 {
                     // Load file
                     System.out.print("Enter the filename: ");
                     String filename = scanner.nextLine();
-                    ledger.clear();
                     if (populateAccounts(ledger, filename)) {
                         System.out.println("File loaded successfully.");
                     } else {
@@ -122,11 +114,11 @@ public class Assignement2 {
                         }
                     }
                     if (accToList != null) {
-                        System.out.print("Enter the counterparty  (Or nothing to list all entries): ");
+                        System.out.print("Enter the counterparty name: ");
                         String counterpartyName = scanner.nextLine();
                         ArrayList<Entry> entries = accToList.listByCounterparty(counterpartyName);
                         for (Entry entry : entries) {
-                            System.out.println(entry);
+                            System.out.println(entry.toString());
                         }
                     } else {
                         System.out.println("Account not found.");
@@ -134,7 +126,7 @@ public class Assignement2 {
                     break;
                 case "5":
                     // Quit
-                    System.out.println("Exiting the ledger. Goodbye!");
+                    System.out.println("Exiting the ledger. Goodbye!s");
                     prompt = false;
                     break;
                 default:

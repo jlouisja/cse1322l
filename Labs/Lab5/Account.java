@@ -1,3 +1,4 @@
+package Labs.Lab5;
 public class Account {
     // 3 fields
     public int accountNumber;
@@ -38,4 +39,5 @@ public class Account {
     public String toString() {
         return "Account Number: " + this.accountNumber + ", Account Balance: " + this.accountBalance;
     }
+
 }

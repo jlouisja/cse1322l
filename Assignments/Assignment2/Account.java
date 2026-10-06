@@ -6,7 +6,7 @@ public class Account {
 
     public Account(String owner) {
         this.owner = owner;
-        this.entries = new ArrayList<Entry>();
+        this.entries = new ArrayList<>();
     }
     public String getOwner() {
         return owner;
@@ -16,55 +16,47 @@ public class Account {
         entries.add(entry);
     }
     public ArrayList<Entry> listByCounterparty(String counterparty) {
-        ArrayList<Entry> filteredEntries = new ArrayList<Entry>();
-        if (counterparty.equals("")){
-            filteredEntries.addAll(entries);
+        ArrayList<Entry> filteredEntries = new ArrayList<>();
+        for (Entry entry : entries) {
+            if (entry.getCounterparty().equals(counterparty)) {
+                filteredEntries.add(entry);
+            }
         }
-        else {
-            for (Entry entry : entries) {
-                if (entry.getCounterparty().equals(counterparty)) {
-                    filteredEntries.add(entry);
-                }
-        }
-    }
         return filteredEntries;
     }
     public ArrayList<String> listByCounterparties()
     {
-        ArrayList<String> counterparties = new ArrayList<String>();
+        ArrayList<String> counterparties = new ArrayList<>();
         for (Entry entry : entries) {
-            if (!counterparties.contains(entry.getCounterparty())) {
-                counterparties.add(entry.getCounterparty());
+            String counterparty = entry.getCounterparty();
+            if (!counterparties.contains(counterparty)) {
+                counterparties.add(counterparty);
             }
         }
         return counterparties;
     }
     public String getStatement(){
 
-        String statement = "Statement for '" + owner + "':\n";
-        
+        StringBuilder statement = new StringBuilder();
+        statement.append(String.format("Statement for '%s':\n", owner));
         ArrayList<String> counterparties = listByCounterparties();
-        
         for (String counterparty : counterparties) {
             int balance = 0;
-            ArrayList<Entry> entriesForCounterparty = listByCounterparty(counterparty);
-            for (Entry entry : entriesForCounterparty) {
-                if (entry.getCounterpartyGiving()){
+            ArrayList<Entry> entriesWithCounterparty = listByCounterparty(counterparty);
+            for (Entry entry : entriesWithCounterparty) {
+                if (entry.getCounterpartyGiving()) {
                     balance += entry.getQuantity();
                 } else {
                     balance -= entry.getQuantity();
                 }
             }
             if (balance > 0) {
-                statement += owner + " is owed $" + balance + " from " + counterparty + "\n";
+                statement.append(String.format("%s is owed $%d from %s\n", owner, balance, counterparty));
             } else if (balance < 0) {
-                statement += owner + " owes $" + Math.abs(balance) + " to " + counterparty + "\n";
+                statement.append(String.format("%s owes $%d to %s\n", owner, -balance, counterparty));
             }
         }
-        return statement;
+        return statement.toString();
+
     }
 }
-
-
-
-
