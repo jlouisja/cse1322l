@@ -1,4 +1,3 @@
-package Labs.Lab5;
 public class Account {
     // 3 fields
     public int accountNumber;
