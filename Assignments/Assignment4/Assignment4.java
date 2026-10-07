@@ -1,3 +1,7 @@
+// Jasmine Louis-Jacques
+// CSE 1322L
+// Assignment 4
+
 package Assignments.Assignment4;
 
 import java.util.ArrayList;
@@ -17,7 +21,7 @@ public class Assignment4 {
         System.out.println("2. Add Image Content");
         System.out.println("3. Add Audio Content");
         System.out.println("4. Add Video Content");
-        System.out.println("5. List All Content");
+        System.out.println("5. List Content");
         System.out.println("0. Exit");
         System.out.print("Enter your choice: ");
         int choice = scanner.nextInt();
@@ -115,16 +119,71 @@ public class Assignment4 {
                 if (contents.isEmpty()) {
                     System.out.println("No content available.");
                 } else {
-                    System.out.println("*** List of All Content ***");
+                    System.out.println("*** List Content ***");
                     System.out.println();
+                    System.out.print("Enter the type of content to list \n (1 for Static, 2 for Dynamic, 3 for Written, 4 for Image, 5 for Audio, 6 for Video, 7 for Widescreen, 8 for All): ");
+                    int contentTypeChoice = scanner.nextInt();
+                    System.out.println();
+
                     for (Content content : contents) {
-                        System.out.println(content.toString());
-                        System.out.println();
-                        System.out.println("--------------------");
-                        System.out.println();
-                    }
+                        switch (contentTypeChoice) {
+                            case 1:
+                                if (content instanceof StaticContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 2:
+                                if (content instanceof DynamicContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 3:
+                                if (content instanceof WrittenContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 4:
+                                if (content instanceof ImageContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 5:
+                                if (content instanceof AudioContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 6:
+                                if (content instanceof VideoContent) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 7:
+                                if (content instanceof ImageContent && ((ImageContent) content).hasWideScreenSupport()) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                if (content instanceof VideoContent && ((VideoContent) content).hasWideScreenSupport()) {
+                                    System.out.println(content);
+                                    System.out.println();
+                                }
+                                break;
+                            case 8:
+                                System.out.println(content);
+                                System.out.println();
+                                break;
+                            default:
+                                System.out.println("Invalid choice. Please try again.");
+                        }
+                   
                 }
-                break;
+            }
+            break;
             case 0:
                 System.out.println("Exiting the program. Goodbye!");
                 running = false;
@@ -134,5 +193,4 @@ public class Assignment4 {
         }
     }
 }
-
 }
